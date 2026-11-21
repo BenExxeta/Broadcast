@@ -17,6 +17,12 @@ const ENTRIES: SampleEntry[] = [
     hoursAgo: 2,
     raw: {
       url: 'https://example.com/demo/marcha-centro',
+      image: {
+        src: '/images/plaza.jpg',
+        alt: 'Plaza Liberación mit dem Teatro Degollado',
+        credit: 'Foto: Encogua · CC BY-SA 4.0 · Wikimedia Commons',
+        creditUrl: 'https://commons.wikimedia.org/wiki/File:Plaza_Liberaci%C3%B3n_y_Teatro_Degollado_en_Guadalajara.jpg',
+      },
       source: 'Demo: Jalisco Desk',
       title: 'Marcha de maestros bloquea vialidades en el Centro Histórico',
       excerpt:
@@ -69,6 +75,12 @@ const ENTRIES: SampleEntry[] = [
     hoursAgo: 8,
     raw: {
       url: 'https://example.com/demo/lluvias',
+      image: {
+        src: '/images/skyline.jpg',
+        alt: 'Hochhäuser der Skyline von Guadalajara',
+        credit: 'Foto: Isacdaavid · CC BY-SA 4.0 · Wikimedia Commons',
+        creditUrl: 'https://commons.wikimedia.org/wiki/File:Skyline_Guadalajara_Americas_IMG_20210910_185500.jpg',
+      },
       source: 'Demo: Weather Wire',
       title: 'Alerta por lluvias intensas y granizo en la zona metropolitana',
       excerpt:
@@ -95,6 +107,12 @@ const ENTRIES: SampleEntry[] = [
     hoursAgo: 14,
     raw: {
       url: 'https://example.com/demo/tramite-residencia',
+      image: {
+        src: '/images/cathedral.jpg',
+        alt: 'Kathedrale von Guadalajara aus der Luft',
+        credit: 'Foto: ProtoplasmaKid · CC BY-SA 4.0 · Wikimedia Commons',
+        creditUrl: 'https://commons.wikimedia.org/wiki/File:Catedral_metropolitana_de_Guadalajara_01.jpg',
+      },
       source: 'Demo: Civic Notes',
       title: 'Nuevo trámite en línea para citas de residencia temporal',
       excerpt:
@@ -121,6 +139,12 @@ const ENTRIES: SampleEntry[] = [
     hoursAgo: 11,
     raw: {
       url: 'https://example.com/demo/tarifa-camion',
+      image: {
+        src: '/images/metrobus.jpg',
+        alt: 'Mi-Macro-Bus an der Station Periférico Sur',
+        credit: 'Foto: SistemaRayoXP · CC0 · Wikimedia Commons',
+        creditUrl: 'https://commons.wikimedia.org/wiki/File:Mi_Macro_Perif%C3%A9rico_estaci%C3%B3n_Perif%C3%A9rico_Sur.jpg',
+      },
       source: 'Demo: Economy Desk',
       title: 'Aumenta la tarifa de la ruta de camión por Periférico',
       excerpt:

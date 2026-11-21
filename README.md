@@ -41,6 +41,26 @@ Edit `config/sources.json`. Each entry needs an `id`, a `name` (shown as the sou
 
 Check a feed URL with `curl -I <feedUrl>` before adding it. A feed that fails is logged and skipped, and the rest still refresh.
 
+## Images and credits
+
+Photos live in `public/images/`. They come from Wikimedia Commons and are licensed CC0 or CC BY-SA 4.0. Each photo is labelled "Symbol photo" with its credit and a link to the file page on the article page. Articles without a photo show a placeholder with the section name.
+
+To add a photo to a sample article, set `image` (`src`, `alt`, `credit`, `creditUrl`) in `src/lib/ai/sample-news.ts`. Live articles from RSS do not have photos yet.
+
+## Saved articles and sharing
+
+- "Save" stores the article id in a cookie, so no account is needed. The "Saved" filter shows them.
+- "Share on WhatsApp" opens WhatsApp with the title and the article link.
+
+## Daily e-mail digest
+
+- Visitors subscribe on the front page. Consent is required and the address is stored in `data/store.json`.
+- `npm run digest` sends each subscriber their top five stories for their topics. Every e-mail has an unsubscribe link.
+- Without `RESEND_API_KEY` the script only prints the messages (dry run). To send for real, set `RESEND_API_KEY`, `DIGEST_FROM` (a sender on a domain you have verified with the provider, Resend), and `APP_URL`.
+- The digest needs a scheduler (cron, a GitHub Action or a Netlify scheduled function) to run daily. This is not included.
+- On Netlify the subscriber list is not persistent (see the deploy notes). Subscribers are lost there until the store is moved to persistent storage.
+- Push notifications are not implemented.
+
 ## Project layout
 
 ```

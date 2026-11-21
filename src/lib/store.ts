@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import type { Analysis, Article, RatingEntry, RawArticle, ReportEntry } from './types';
+import type { Analysis, Article, RatingEntry, RawArticle, ReportEntry, Subscriber } from './types';
 
 /**
  * Prototype persistence: one JSON file. Locally it lives in data/. On Netlify the
@@ -24,6 +24,7 @@ interface StoreShape {
   /** Per day: total visits and hashed visitor ids (no raw IPs stored). */
   visits: Record<string, { count: number; visitors: string[] }>;
   lastRefresh: string | null;
+  subscribers: Subscriber[];
 }
 
 const EMPTY: StoreShape = {
@@ -33,6 +34,7 @@ const EMPTY: StoreShape = {
   reports: [],
   visits: {},
   lastRefresh: null,
+  subscribers: [],
 };
 
 export function articleId(url: string): string {
@@ -108,6 +110,22 @@ export const store = {
       const entry = (s.visits[day] ??= { count: 0, visitors: [] });
       entry.count += 1;
       if (!entry.visitors.includes(visitorHash)) entry.visitors.push(visitorHash);
+    });
+  },
+
+  /** A new sign-up with the same e-mail replaces the old entry. */
+  addSubscriber(subscriber: Subscriber): void {
+    update((s) => {
+      s.subscribers = s.subscribers.filter((x) => x.email !== subscriber.email);
+      s.subscribers.push(subscriber);
+    });
+  },
+
+  removeSubscriber(token: string): boolean {
+    return update((s) => {
+      const before = s.subscribers.length;
+      s.subscribers = s.subscribers.filter((x) => x.token !== token);
+      return s.subscribers.length < before;
     });
   },
 

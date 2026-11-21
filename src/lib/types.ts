@@ -18,6 +18,14 @@ export const LANGS: Lang[] = ['de', 'en'];
 
 export type Localized = Record<Lang, string>;
 
+/** Photo for an article. Credit and licence are shown next to the image. */
+export interface ArticleImage {
+  src: string;
+  alt: string;
+  credit: string;
+  creditUrl: string;
+}
+
 /** What we keep from a feed item. We never store the full article text. */
 export interface RawArticle {
   url: string;
@@ -25,6 +33,7 @@ export interface RawArticle {
   excerpt: string;
   source: string;
   publishedAt: string; // ISO 8601
+  image?: ArticleImage;
 }
 
 /** Output of the AI step (Claude in live mode, a lookup table in mock mode). */
@@ -53,4 +62,13 @@ export interface RatingEntry {
 export interface ReportEntry {
   articleId: string;
   at: string;
+}
+
+/** Someone who asked for the daily e-mail summary. The token is used for the unsubscribe link. */
+export interface Subscriber {
+  email: string;
+  lang: Lang;
+  topics: Category[];
+  token: string;
+  createdAt: string;
 }

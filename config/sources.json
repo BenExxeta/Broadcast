@@ -1,5 +1,6 @@
 {
   "relevanceThreshold": 5,
+  "leadStory": false,
   "editionWindowHours": 24,
   "ingestWindowHours": 48,
   "excerptChars": 300,

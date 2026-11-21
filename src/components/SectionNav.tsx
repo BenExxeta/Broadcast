@@ -1,16 +1,17 @@
 import Link from 'next/link';
-import { CATEGORIES, type Category, type Lang } from '@/lib/types';
 import { categoryLabel, t } from '@/lib/i18n';
+import { CATEGORIES, type Category, type Lang } from '@/lib/types';
 
-/** 'mine' = the visitor's chosen topics, 'all' = everything, or one category. */
-export type Filter = 'mine' | 'all' | Category;
+/** 'mine' = the visitor's chosen topics, 'all' = everything, 'saved' = bookmarks, or one category. */
+export type Filter = 'mine' | 'all' | 'saved' | Category;
 
-/** Filter row under the masthead, styled like a newspaper's section index. Uses ?section= for the filter. */
+/** Filter row under the masthead. One line that scrolls sideways on every screen size. */
 export function SectionNav({ lang, active }: { lang: Lang; active: Filter }) {
   const txt = t(lang);
   const items: { key: Filter; label: string; href: string }[] = [
     { key: 'mine', label: txt.myTopics, href: '/' },
     { key: 'all', label: txt.allSections, href: '/?section=all' },
+    { key: 'saved', label: txt.savedTopics, href: '/?section=saved' },
     ...CATEGORIES.map((c) => ({
       key: c,
       label: categoryLabel(c, lang),
@@ -19,11 +20,11 @@ export function SectionNav({ lang, active }: { lang: Lang; active: Filter }) {
   ];
   return (
     <nav aria-label={txt.allSections} className="border-b border-ink py-2">
-      <ul className="flex gap-1 overflow-x-auto sm:flex-wrap sm:justify-center">
+      <ul className="-mx-4 flex gap-1 overflow-x-auto px-4 sm:mx-0 sm:px-0">
         {items.map((item) => {
           const isActive = item.key === active;
           return (
-            <li key={item.key}>
+            <li key={item.key} className="shrink-0">
               <Link
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}

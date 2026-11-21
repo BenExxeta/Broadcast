@@ -1,16 +1,20 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Dateline } from '@/components/ArticleCard';
+import { ArticleImage } from '@/components/ArticleImage';
+import { BookmarkButton } from '@/components/BookmarkButton';
 import { DemoBanner } from '@/components/DemoBanner';
 import { Masthead } from '@/components/Masthead';
 import { RatingForm } from '@/components/RatingForm';
 import { ReportButton } from '@/components/ReportButton';
 import { SectionLabel } from '@/components/SectionNav';
-import { publishedAt } from '@/lib/dates';
+import { ShareButton } from '@/components/ShareButton';
 import { isMockMode } from '@/lib/config';
+import { publishedAt } from '@/lib/dates';
 import { findArticle } from '@/lib/edition';
 import { currentLang } from '@/lib/lang';
 import { t } from '@/lib/i18n';
+import { currentSaved } from '@/lib/saved';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,9 +23,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
   const article = findArticle(id);
   if (!article) notFound();
 
+  // Works without setup too, so a link shared on WhatsApp opens directly.
   const lang = await currentLang();
   const txt = t(lang);
   const { analysis } = article;
+  const saved = await currentSaved();
 
   return (
     <>
@@ -40,7 +46,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           {analysis.title[lang]}
         </h1>
         <p className="mt-3 text-sm text-ink-soft italic">
-          {article.title}
+          {txt.originalHeadline}: {article.title}
         </p>
 
         {/* Source metadata strip, like the byline line under a printed headline. */}
@@ -55,6 +61,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
             {txt.relevance}: {analysis.relevance}/10
           </span>
         </div>
+        <p className="mt-2 text-xs text-ink-soft">{txt.relevanceHelp}</p>
+
+        <div className="mt-6">
+          <ArticleImage article={article} lang={lang} />
+        </div>
 
         <div className="mt-6">
           <Dateline article={article} lang={lang} />
@@ -66,7 +77,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           <p className="mt-2 leading-relaxed">{analysis.whyItMatters[lang]}</p>
         </aside>
 
-        <p>
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href={article.url}
             target="_blank"
@@ -75,7 +86,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           >
             {txt.readOriginal} ↗
           </a>
-        </p>
+          <BookmarkButton articleId={id} lang={lang} initialSaved={saved.includes(id)} />
+          <ShareButton title={analysis.title[lang]} lang={lang} path={`/article/${id}`} />
+        </div>
 
         {/* Feedback for the success metrics: usefulness rating and inaccuracy report. */}
         <section className="mt-10 space-y-6 border-t-[3px] border-double border-ink pt-6">
