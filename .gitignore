@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# local data (JSON store, AI cache, visit log)
+data/*.json
+data/*.tmp
+
+# env
+.env
+.env.local
+
+# misc
+*.log
+.DS_Store
+
+# generated TypeScript build cache
+*.tsbuildinfo

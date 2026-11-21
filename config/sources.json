@@ -1,0 +1,20 @@
+{
+  "relevanceThreshold": 5,
+  "editionWindowHours": 24,
+  "ingestWindowHours": 48,
+  "excerptChars": 300,
+  "sources": [
+    {
+      "id": "informador-jalisco",
+      "name": "El Informador (Jalisco)",
+      "feedUrl": "https://www.informador.mx/rss/jalisco.xml",
+      "enabled": true
+    },
+    {
+      "id": "gaceta-udg",
+      "name": "Gaceta UDG",
+      "feedUrl": "https://www.gaceta.udg.mx/feed/",
+      "enabled": true
+    }
+  ]
+}

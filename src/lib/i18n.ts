@@ -1,0 +1,144 @@
+import type { Category, Lang, Localized } from './types';
+
+/** UI strings. Keep keys identical across languages; TypeScript enforces it. */
+const STRINGS = {
+  en: {
+    siteName: 'Abroadcast',
+    edition: 'Guadalajara Edition',
+    todaysEdition: "Today's Edition",
+    topStory: 'Top Story',
+    allSections: 'All Sections',
+    noStories: 'No stories in this section today. Check back after the next refresh.',
+    whyItMatters: 'Why this matters to you',
+    readOriginal: 'Read the full article',
+    source: 'Source',
+    published: 'Published',
+    relevance: 'Relevance',
+    rateTitle: 'Was this summary useful and understandable?',
+    rateLabel: 'Rate from 1 to 5',
+    reportButton: 'Report inaccurate summary',
+    reportDone: 'Thanks, the report was recorded.',
+    rateDone: 'Thanks for your rating.',
+    sampleBanner: 'Demo mode: sample articles and simulated AI output. No live news.',
+    languageLabel: 'Language',
+    backToEdition: '← Back to the edition',
+    statsTitle: 'Usage Statistics',
+    visitsToday: 'Visits today',
+    visitsTotal: 'Visits (all days)',
+    uniqueToday: 'Unique visitors today',
+    avgRating: 'Average usefulness rating',
+    ratingsCount: 'Ratings received',
+    reportsCount: 'Inaccurate-summary reports',
+    byDay: 'Daily visits',
+    dayHeader: 'Day',
+    perArticle: 'Per article',
+    noData: 'No data yet.',
+    articlesHeader: 'Article',
+    ratingsHeader: 'Avg rating',
+    reportsHeader: 'Reports',
+    lastUpdated: 'Last refresh',
+    dateline: 'GUADALAJARA',
+    welcomeText:
+      'Abroadcast gives you a short daily overview of local news from Guadalajara, in German or English. Every story has a summary, a note on why it matters to you as a foreigner, and a link to the original source. Reading takes under five minutes.',
+    tryOut: 'Try it out',
+    wizCityTitle: 'Where do you live?',
+    wizCityHelp: 'Abroadcast currently covers Guadalajara. More cities will follow.',
+    wizCityGuadalajara: 'Guadalajara, Jalisco',
+    wizLangTitle: 'Which language do you read?',
+    wizLangHelp: 'All summaries are available in this language.',
+    wizLangDe: 'Deutsch',
+    wizLangEn: 'English',
+    wizTopicsTitle: 'Which news matter most to you?',
+    wizTopicsHelp: 'Pick as many as you like. You can change this later.',
+    wizBack: 'Back',
+    wizNext: 'Next',
+    wizFinish: 'Show my edition',
+    myTopics: 'My Topics',
+    openArticle: 'Open article',
+    moreStories: 'More stories',
+    changeSetup: 'Change my settings',
+    noTopicsSelected: 'No topics selected yet. Choose at least one in the setup.',
+  },
+  de: {
+    siteName: 'Abroadcast',
+    edition: 'Guadalajara-Ausgabe',
+    todaysEdition: 'Ausgabe von heute',
+    topStory: 'Titelgeschichte',
+    allSections: 'Alle Ressorts',
+    noStories: 'Heute keine Meldungen in diesem Ressort. Schau nach der nächsten Aktualisierung wieder vorbei.',
+    whyItMatters: 'Warum das für dich wichtig ist',
+    readOriginal: 'Ganzen Artikel lesen',
+    source: 'Quelle',
+    published: 'Veröffentlicht',
+    relevance: 'Relevanz',
+    rateTitle: 'War diese Zusammenfassung hilfreich und verständlich?',
+    rateLabel: 'Bewerte von 1 bis 5',
+    reportButton: 'Zusammenfassung melden (falsch)',
+    reportDone: 'Danke, die Meldung wurde gespeichert.',
+    rateDone: 'Danke für deine Bewertung.',
+    sampleBanner: 'Demo-Modus: Beispielartikel und simulierte KI-Ausgabe. Keine Live-Nachrichten.',
+    languageLabel: 'Sprache',
+    backToEdition: '← Zurück zur Ausgabe',
+    statsTitle: 'Nutzungsstatistik',
+    visitsToday: 'Besuche heute',
+    visitsTotal: 'Besuche (alle Tage)',
+    uniqueToday: 'Eindeutige Besucher heute',
+    avgRating: 'Durchschnittliche Bewertung',
+    ratingsCount: 'Abgegebene Bewertungen',
+    reportsCount: 'Meldungen falscher Zusammenfassungen',
+    byDay: 'Besuche pro Tag',
+    dayHeader: 'Tag',
+    perArticle: 'Pro Artikel',
+    noData: 'Noch keine Daten.',
+    articlesHeader: 'Artikel',
+    ratingsHeader: 'Ø Bewertung',
+    reportsHeader: 'Meldungen',
+    lastUpdated: 'Letzte Aktualisierung',
+    dateline: 'GUADALAJARA',
+    welcomeText:
+      'Abroadcast bietet dir täglich einen kurzen Überblick über lokale Nachrichten aus Guadalajara, auf Deutsch oder Englisch. Jede Meldung hat eine Zusammenfassung, einen Hinweis, warum sie für dich als Ausländer wichtig ist, und einen Link zur Originalquelle. Lesen dauert unter fünf Minuten.',
+    tryOut: 'Ausprobieren',
+    wizCityTitle: 'Wo wohnst du?',
+    wizCityHelp: 'Abroadcast deckt derzeit Guadalajara ab. Weitere Städte folgen.',
+    wizCityGuadalajara: 'Guadalajara, Jalisco',
+    wizLangTitle: 'Welche Sprache liest du?',
+    wizLangHelp: 'Alle Zusammenfassungen gibt es in dieser Sprache.',
+    wizLangDe: 'Deutsch',
+    wizLangEn: 'English',
+    wizTopicsTitle: 'Welche Nachrichten sind für dich am wichtigsten?',
+    wizTopicsHelp: 'Wähle so viele aus, wie du möchtest. Das kannst du später ändern.',
+    wizBack: 'Zurück',
+    wizNext: 'Weiter',
+    wizFinish: 'Meine Ausgabe anzeigen',
+    myTopics: 'Meine Themen',
+    openArticle: 'Artikel öffnen',
+    moreStories: 'Weitere Meldungen',
+    changeSetup: 'Einstellungen ändern',
+    noTopicsSelected: 'Noch keine Themen gewählt. Wähle im Setup mindestens eins aus.',
+  },
+};
+
+/** Both languages must define the same keys; this type is derived from English. */
+export type Dict = Record<keyof (typeof STRINGS)['en'], string>;
+
+export function t(lang: Lang): Dict {
+  return STRINGS[lang];
+}
+
+/** Section labels, styled like newspaper section headers on the site. */
+export const CATEGORY_LABELS: Record<Category, Localized> = {
+  Safety: { en: 'Safety', de: 'Sicherheit' },
+  'Transport & Traffic': { en: 'Transport & Traffic', de: 'Verkehr' },
+  Weather: { en: 'Weather', de: 'Wetter' },
+  'Politics & Administration': { en: 'Politics & Administration', de: 'Politik & Verwaltung' },
+  'Events & Culture': { en: 'Events & Culture', de: 'Veranstaltungen & Kultur' },
+  Economy: { en: 'Economy', de: 'Wirtschaft' },
+};
+
+export function categoryLabel(category: Category, lang: Lang): string {
+  return CATEGORY_LABELS[category][lang];
+}
+
+export function parseLang(value: string | undefined | null): Lang {
+  return value === 'de' ? 'de' : 'en';
+}

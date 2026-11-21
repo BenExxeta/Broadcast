@@ -1,0 +1,12 @@
+# Netlify build settings. Environment variables are set in the Netlify dashboard
+# (see README, section "Deploy to Netlify").
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Runs Next.js App Router pages and API routes as Netlify Functions.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

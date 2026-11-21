@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Newspaper palette: cream paper, black ink. Contrast of ink on paper is about 15:1. */
+@theme {
+  --color-paper: #f7f1e3;
+  --color-paper-dark: #ebe3cf;
+  --color-ink: #1b1915;
+  --color-ink-soft: #4d4840;
+  --color-accent: #8a1c1c;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-libre), Georgia, serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Drop cap on the first letter of an article's opening paragraph. */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4.5rem;
+  line-height: 0.85;
+  padding: 0.35rem 0.5rem 0 0;
+}
