@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { PREFS_COOKIE, serializePrefs, type Prefs } from '@/lib/prefs';
-import { CATEGORIES, type Category, type Lang } from '@/lib/types';
+import { CATEGORIES, LANGS, type Category, type Lang } from '@/lib/types';
 
 /** POST { city, lang, topics } from the wizard. Sets the preference cookie and the language cookie. */
 export async function POST(request: Request) {
@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   if (body?.city !== 'guadalajara') {
     return NextResponse.json({ error: 'Unsupported city' }, { status: 400 });
   }
-  const lang: Lang | null = body.lang === 'de' || body.lang === 'en' ? body.lang : null;
+  const lang = LANGS.find((code) => code === body.lang) ?? null;
   if (!lang) {
     return NextResponse.json({ error: 'Unsupported language' }, { status: 400 });
   }

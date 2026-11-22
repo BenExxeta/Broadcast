@@ -20,7 +20,7 @@ function Tile({ label, value }: { label: string; value: string | number }) {
 
 export default async function StatsPage() {
   const lang = await currentLang();
-  const txt = t(lang);
+  const txt = t();
   const stats = computeStats();
   const fmt = (n: number | null) => (n === null ? '–' : n.toFixed(1));
 

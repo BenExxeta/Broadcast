@@ -5,7 +5,7 @@ import type { Lang } from '@/lib/types';
 export function DemoBanner({ lang }: { lang: Lang }) {
   return (
     <p role="status" className="my-3 border border-accent bg-paper-dark px-3 py-2 text-center text-sm text-accent">
-      {t(lang).sampleBanner}
+      {t().sampleBanner}
     </p>
   );
 }

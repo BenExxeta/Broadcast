@@ -6,7 +6,7 @@ import type { Lang } from '@/lib/types';
 
 /** Toggles an article in the visitor's saved list. Shows the new state right away. */
 export function BookmarkButton({ articleId, lang, initialSaved }: { articleId: string; lang: Lang; initialSaved: boolean }) {
-  const txt = t(lang);
+  const txt = t();
   const [saved, setSaved] = useState(initialSaved);
   const [busy, setBusy] = useState(false);
 

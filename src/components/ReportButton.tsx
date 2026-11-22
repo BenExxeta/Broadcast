@@ -6,7 +6,7 @@ import type { Lang } from '@/lib/types';
 
 /** "Report inaccurate summary" button. One report per click, then a confirmation. */
 export function ReportButton({ articleId, lang }: { articleId: string; lang: Lang }) {
-  const txt = t(lang);
+  const txt = t();
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
 

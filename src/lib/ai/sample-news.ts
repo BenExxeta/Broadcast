@@ -1,4 +1,5 @@
-import type { Analysis, RawArticle } from '../types';
+import type { Analysis, Localized, RawArticle } from '../types';
+import { SAMPLE_TRANSLATIONS } from './sample-translations';
 
 /**
  * Sample articles for mock mode. Headlines are invented and the sources are
@@ -9,7 +10,12 @@ import type { Analysis, RawArticle } from '../types';
 interface SampleEntry {
   hoursAgo: number;
   raw: Omit<RawArticle, 'publishedAt'>;
-  analysis: Analysis;
+  /** English and German are written here; the other languages come from sample-translations.ts. */
+  analysis: Omit<Analysis, 'title' | 'summary' | 'whyItMatters'> & {
+    title: Partial<Localized>;
+    summary: Partial<Localized>;
+    whyItMatters: Partial<Localized>;
+  };
 }
 
 const ENTRIES: SampleEntry[] = [
@@ -281,7 +287,14 @@ export function sampleRawArticles(now: Date = new Date()): RawArticle[] {
   }));
 }
 
-/** Canned AI output for mock mode, keyed by article URL. */
+/** Canned AI output for mock mode, keyed by article URL. Adds the Spanish, French and Swedish texts. */
 export const SAMPLE_ANALYSES: Record<string, Analysis> = Object.fromEntries(
-  ENTRIES.map(({ raw, analysis }) => [raw.url, analysis]),
+  ENTRIES.map(({ raw, analysis }) => {
+    const extra = SAMPLE_TRANSLATIONS[raw.url] ?? {};
+    const merge = (key: 'title' | 'summary' | 'whyItMatters'): Localized => ({
+      ...analysis[key],
+      ...Object.fromEntries(Object.entries(extra).map(([lang, fields]) => [lang, fields[key]])),
+    }) as Localized;
+    return [raw.url, { ...analysis, title: merge('title'), summary: merge('summary'), whyItMatters: merge('whyItMatters') }];
+  }),
 );

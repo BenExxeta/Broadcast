@@ -16,7 +16,7 @@ export function ShareButton({ title, lang, path }: { title: string; lang: Lang; 
       onClick={share}
       className="border border-ink px-3 py-1 text-sm text-ink hover:bg-paper-dark"
     >
-      {t(lang).share}
+      {t().share}
     </button>
   );
 }

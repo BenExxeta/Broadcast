@@ -3,7 +3,12 @@ import { sampleRawArticles } from './ai/sample-news';
 import { config, isMockMode } from './config';
 import { fetchAllFeeds } from './ingest/rss';
 import { articleId, store } from './store';
-import type { RawArticle } from './types';
+import { LANGS, type Analysis, type RawArticle } from './types';
+
+/** Cached results from before a language was added are processed again, so nothing shows English by mistake. */
+function isComplete(analysis: Analysis): boolean {
+  return LANGS.every((lang) => analysis.title[lang] && analysis.summary[lang] && analysis.whyItMatters[lang]);
+}
 
 export interface RefreshSummary {
   mode: 'mock' | 'live';
@@ -34,7 +39,7 @@ export async function refreshNews(): Promise<RefreshSummary> {
   for (const raw of items) {
     try {
       const cached = store.getAnalysis(articleId(raw.url));
-      if (cached) {
+      if (cached && isComplete(cached)) {
         summary.cached += 1;
         store.saveArticle(raw, cached, mock);
         continue;

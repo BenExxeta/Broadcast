@@ -1,18 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { categoryLabel, t } from '@/lib/i18n';
+import { NEWSPAPER_IMAGE } from '@/lib/category-images';
+import { LANGUAGE_OPTIONS, categoryLabel, t } from '@/lib/i18n';
 import { CATEGORIES, type Category, type Lang } from '@/lib/types';
 
 const STEPS = 3;
 
-/** Three-step setup: city, language, topics. Saves to /api/prefs, then opens the edition. */
+/** Three-step setup: city, article language, topics. The interface stays English throughout. */
 export function SetupWizard({ initialLang }: { initialLang: Lang }) {
   const [step, setStep] = useState(0);
   const [lang, setLang] = useState<Lang>(initialLang);
   const [topics, setTopics] = useState<Category[]>([]);
   const [busy, setBusy] = useState(false);
-  const txt = t(lang);
+  const txt = t();
 
   function toggleTopic(category: Category) {
     setTopics((current) =>
@@ -40,6 +41,13 @@ export function SetupWizard({ initialLang }: { initialLang: Lang }) {
 
   return (
     <section className="mx-auto mt-6 max-w-2xl border-2 border-ink p-5 sm:p-8">
+      {/* Newspaper illustration. Multiply blends its white background into the cream paper. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={NEWSPAPER_IMAGE.src}
+        alt={NEWSPAPER_IMAGE.alt}
+        className="mx-auto mb-6 w-44 mix-blend-multiply sm:w-56"
+      />
       <p className="text-xs font-bold tracking-[0.2em] text-ink-soft uppercase">
         {step + 1} / {STEPS}
       </p>
@@ -48,11 +56,7 @@ export function SetupWizard({ initialLang }: { initialLang: Lang }) {
         <div className="mt-4 space-y-4">
           <h2 className="font-display text-3xl font-black">{txt.wizCityTitle}</h2>
           <p className="text-sm text-ink-soft">{txt.wizCityHelp}</p>
-          <button
-            type="button"
-            aria-pressed="true"
-            className={`${buttonBase} ${selectedClass} w-full`}
-          >
+          <button type="button" aria-pressed="true" className={`${buttonBase} ${selectedClass} w-full`}>
             {txt.wizCityGuadalajara}
           </button>
         </div>
@@ -63,7 +67,7 @@ export function SetupWizard({ initialLang }: { initialLang: Lang }) {
           <h2 className="font-display text-3xl font-black">{txt.wizLangTitle}</h2>
           <p className="text-sm text-ink-soft">{txt.wizLangHelp}</p>
           <div className="grid gap-3 sm:grid-cols-2">
-            {(['de', 'en'] as Lang[]).map((code) => (
+            {LANGUAGE_OPTIONS.map(({ code, name }) => (
               <button
                 key={code}
                 type="button"
@@ -71,7 +75,7 @@ export function SetupWizard({ initialLang }: { initialLang: Lang }) {
                 onClick={() => setLang(code)}
                 className={`${buttonBase} ${lang === code ? selectedClass : idleClass}`}
               >
-                {code === 'de' ? txt.wizLangDe : txt.wizLangEn}
+                {name}
               </button>
             ))}
           </div>
@@ -93,7 +97,7 @@ export function SetupWizard({ initialLang }: { initialLang: Lang }) {
                   onClick={() => toggleTopic(category)}
                   className={`${buttonBase} ${selected ? selectedClass : idleClass}`}
                 >
-                  {categoryLabel(category, lang)}
+                  {categoryLabel(category)}
                 </button>
               );
             })}

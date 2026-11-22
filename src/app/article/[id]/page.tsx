@@ -25,7 +25,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
 
   // Works without setup too, so a link shared on WhatsApp opens directly.
   const lang = await currentLang();
-  const txt = t(lang);
+  const txt = t();
   const { analysis } = article;
   const saved = await currentSaved();
 

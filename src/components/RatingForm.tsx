@@ -6,7 +6,7 @@ import type { Lang } from '@/lib/types';
 
 /** Five-step usefulness rating. Posts to /api/rate and then shows a thank-you note. */
 export function RatingForm({ articleId, lang }: { articleId: string; lang: Lang }) {
-  const txt = t(lang);
+  const txt = t();
   const [score, setScore] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
 

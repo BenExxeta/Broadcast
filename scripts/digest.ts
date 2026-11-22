@@ -15,7 +15,7 @@ const FROM = process.env.DIGEST_FROM ?? 'Abroadcast <onboarding@resend.dev>';
 const MAX_ITEMS = 5;
 
 function compose(sub: Subscriber, articles: Article[]): { subject: string; text: string } {
-  const txt = t(sub.lang);
+  const txt = t();
   const lines = articles.map(
     (a) =>
       `- ${a.analysis.title[sub.lang]}\n  ${a.source} · ${publishedAt(new Date(a.publishedAt), sub.lang)}\n  ${APP_URL}/article/${a.id}`,

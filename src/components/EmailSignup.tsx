@@ -6,7 +6,7 @@ import type { Category, Lang } from '@/lib/types';
 
 /** Asks for an e-mail address and explicit consent, then posts to /api/subscribe. */
 export function EmailSignup({ lang, topics }: { lang: Lang; topics: Category[] }) {
-  const txt = t(lang);
+  const txt = t();
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<'idle' | 'done' | 'error'>('idle');

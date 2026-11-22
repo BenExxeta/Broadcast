@@ -13,7 +13,13 @@ export function dayKey(date: Date = new Date()): string {
   }).format(date);
 }
 
-const LOCALE: Record<Lang, string> = { en: 'en-GB', de: 'de-DE' };
+const LOCALE: Record<Lang, string> = {
+  en: 'en-GB',
+  de: 'de-DE',
+  es: 'es-MX',
+  fr: 'fr-FR',
+  sv: 'sv-SE',
+};
 
 /** Long date for the masthead, e.g. "Friday, 20 November 2026". */
 export function editionDate(date: Date, lang: Lang): string {

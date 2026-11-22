@@ -13,8 +13,9 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
-export type Lang = 'de' | 'en';
-export const LANGS: Lang[] = ['de', 'en'];
+/** Languages for article content. The interface itself is always English. */
+export const LANGS = ['en', 'de', 'es', 'fr', 'sv'] as const;
+export type Lang = (typeof LANGS)[number];
 
 export type Localized = Record<Lang, string>;
 

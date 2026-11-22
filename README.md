@@ -47,6 +47,14 @@ Photos live in `public/images/`. They come from Wikimedia Commons and are licens
 
 To add a photo to a sample article, set `image` (`src`, `alt`, `credit`, `creditUrl`) in `src/lib/ai/sample-news.ts`. Live articles from RSS do not have photos yet.
 
+## Languages
+
+- The interface (navigation, buttons, headings) is always English.
+- Article content (headlines, summaries, "why it matters") is shown in the language chosen in the wizard: English, Deutsch, Español (México), Français or Svenska.
+- Live mode: Claude produces all five languages per article. Articles cached before a language was added are processed again on the next refresh.
+- Demo mode: the sample articles have hand-written translations in `src/lib/ai/sample-translations.ts`.
+- Dates use the matching locale.
+
 ## Saved articles and sharing
 
 - "Save" stores the article id in a cookie, so no account is needed. The "Saved" filter shows them.

@@ -8,7 +8,7 @@ import { t } from '@/lib/i18n';
 /** Landing page: what Abroadcast is, a few current headlines, and the button into the wizard. */
 export default async function WelcomePage() {
   const lang = await currentLang();
-  const txt = t(lang);
+  const txt = t();
   const preview = (await loadEdition()).slice(0, 3);
 
   return (
