@@ -8,6 +8,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Always show the stable demo edition on Netlify. Remove this line to switch to live news
+  # (also requires ANTHROPIC_API_KEY, and the live refresh needs more time than a serverless request allows).
+  MOCK_MODE = "true"
 
 # Runs Next.js App Router pages and API routes as Netlify Functions.
 [[plugins]]
