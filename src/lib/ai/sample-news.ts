@@ -226,6 +226,136 @@ const ENTRIES: SampleEntry[] = [
     },
   },
   {
+    hoursAgo: 4,
+    raw: {
+      url: 'https://example.com/demo/obras-vallarta',
+      source: 'Demo: Jalisco Desk',
+      title: 'Cierre parcial de carriles en Av. Vallarta por obras nocturnas',
+      excerpt:
+        'Desde esta noche y durante dos semanas, un carril de Av. Vallarta permanecerá cerrado entre las 22:00 y las 05:00 horas por trabajos de repavimentación. Se recomienda usar vías alternas.',
+    },
+    analysis: {
+      relevance: 7,
+      category: 'Transport & Traffic',
+      title: {
+        en: 'Lane closures on Av. Vallarta for night works',
+        de: 'Spurensperrung auf der Av. Vallarta wegen nächtlicher Bauarbeiten',
+      },
+      summary: {
+        en: 'For two weeks, one lane of Avenida Vallarta will be closed each night between 22:00 and 05:00 for resurfacing work. Drivers should expect slower traffic and consider alternative routes.',
+        de: 'Zwei Wochen lang wird jede Nacht zwischen 22 und 5 Uhr eine Fahrspur der Avenida Vallarta für Asphaltarbeiten gesperrt. Autofahrer sollten mit langsamerem Verkehr rechnen und Alternativrouten erwägen.',
+      },
+      whyItMatters: {
+        en: 'If you travel along Vallarta at night or early in the morning, leave a little earlier for the next two weeks.',
+        de: 'Wenn du nachts oder früh morgens auf der Vallarta unterwegs bist, plane die nächsten zwei Wochen etwas früher ein.',
+      },
+    },
+  },
+  {
+    hoursAgo: 9,
+    raw: {
+      url: 'https://example.com/demo/calor-semana',
+      source: 'Demo: Weather Wire',
+      title: 'Temperaturas altas y cielo despejado durante la semana',
+      excerpt:
+        'El pronóstico anuncia días soleados con máximas de hasta 31 grados. Se recomienda hidratarse y evitar la exposición al sol al mediodía.',
+    },
+    analysis: {
+      relevance: 6,
+      category: 'Weather',
+      title: {
+        en: 'High temperatures and clear skies this week',
+        de: 'Hohe Temperaturen und klarer Himmel in dieser Woche',
+      },
+      summary: {
+        en: 'Forecasts show sunny days with highs of up to 31 °C. Stay hydrated and avoid long periods in the midday sun.',
+        de: 'Der Wetterbericht meldet sonnige Tage mit Höchstwerten bis 31 Grad. Trink ausreichend und meide die Mittagssonne.',
+      },
+      whyItMatters: {
+        en: 'Carry water and plan outdoor errands for the morning or late afternoon.',
+        de: 'Nimm Wasser mit und erledige Dinge draußen am Vormittag oder späten Nachmittag.',
+      },
+    },
+  },
+  {
+    hoursAgo: 12,
+    raw: {
+      url: 'https://example.com/demo/horario-oficinas',
+      source: 'Demo: Civic Notes',
+      title: 'Nuevo horario de atención en oficinas de gobierno del centro',
+      excerpt:
+        'Las oficinas de atención ciudadana del centro atenderán hasta las 16:00 horas a partir del lunes. Las citas pueden reservarse en línea con anticipación.',
+    },
+    analysis: {
+      relevance: 7,
+      category: 'Politics & Administration',
+      title: {
+        en: 'New opening hours at downtown government offices',
+        de: 'Neue Öffnungszeiten in den Behörden der Innenstadt',
+      },
+      summary: {
+        en: 'From Monday, the citizen service offices downtown close earlier, at 16:00. Appointments can be booked online in advance.',
+        de: 'Ab Montag schließen die Bürgerbüros in der Innenstadt früher, um 16 Uhr. Termine können vorab online gebucht werden.',
+      },
+      whyItMatters: {
+        en: 'If you have paperwork to handle downtown, go in the morning or book an online slot.',
+        de: 'Wenn du Behördengänge im Zentrum hast, geh am Vormittag hin oder buche online einen Termin.',
+      },
+    },
+  },
+  {
+    hoursAgo: 7,
+    raw: {
+      url: 'https://example.com/demo/precio-gasolina',
+      source: 'Demo: Economy Desk',
+      title: 'Sube el precio de la gasolina Magna esta semana',
+      excerpt:
+        'El precio de la gasolina Magna aumentará unos centavos por litro en las estaciones de la zona metropolitana a partir del jueves.',
+    },
+    analysis: {
+      relevance: 7,
+      category: 'Economy',
+      title: {
+        en: 'Petrol prices rise slightly this week',
+        de: 'Benzinpreis steigt in dieser Woche leicht',
+      },
+      summary: {
+        en: 'From Thursday, Magna petrol costs a few centavos more per litre at stations across the metropolitan area. Diesel prices stay the same.',
+        de: 'Ab Donnerstag kostet der Liter Magna an den Tankstellen im Großraum einige Centavos mehr. Dieselpreise bleiben unverändert.',
+      },
+      whyItMatters: {
+        en: 'If you drive every day, plan your fuel budget for the coming weeks. Public transport remains an alternative.',
+        de: 'Wenn du täglich fährst, plane das Tankbudget für die nächsten Wochen ein. Der öffentliche Verkehr bleibt eine Alternative.',
+      },
+    },
+  },
+  {
+    hoursAgo: 15,
+    raw: {
+      url: 'https://example.com/demo/festival-cine',
+      source: 'Demo: Culture Desk',
+      title: 'Festival de cine internacional con funciones gratuitas en el centro',
+      excerpt:
+        'Durante una semana, la cineteca del centro presentará películas internacionales, con funciones gratuitas por la tarde. Se recomienda reservar lugar.',
+    },
+    analysis: {
+      relevance: 6,
+      category: 'Events & Culture',
+      title: {
+        en: 'International film festival with free screenings downtown',
+        de: 'Internationales Filmfestival mit kostenlosen Vorführungen in der Innenstadt',
+      },
+      summary: {
+        en: 'For one week the downtown film archive shows international films, with free screenings in the afternoon. Booking a seat in advance is recommended.',
+        de: 'Eine Woche lang zeigt das Kino der Innenstadt internationale Filme, nachmittags mit kostenlosem Eintritt. Eine Platzreservierung wird empfohlen.',
+      },
+      whyItMatters: {
+        en: 'A low-cost way to practise your Spanish and meet people. Check the schedule before you go.',
+        de: 'Eine günstige Gelegenheit, Spanisch zu üben und Leute kennenzulernen. Schau vorher den Spielplan an.',
+      },
+    },
+  },
+  {
     hoursAgo: 3,
     raw: {
       url: 'https://example.com/demo/liga-local',
@@ -279,11 +409,14 @@ const ENTRIES: SampleEntry[] = [
   },
 ];
 
-/** Raw feed-style items for mock mode, dated relative to `now`. */
-export function sampleRawArticles(now: Date = new Date()): RawArticle[] {
+/** Fixed reference time for the demo, so the sample articles never change from day to day. */
+const DEMO_NOW = Date.parse('2026-11-20T18:00:00Z');
+
+/** Raw feed-style items for mock mode, always the same dates. */
+export function sampleRawArticles(): RawArticle[] {
   return ENTRIES.map(({ hoursAgo, raw }) => ({
     ...raw,
-    publishedAt: new Date(now.getTime() - hoursAgo * 3_600_000).toISOString(),
+    publishedAt: new Date(DEMO_NOW - hoursAgo * 3_600_000).toISOString(),
   }));
 }
 

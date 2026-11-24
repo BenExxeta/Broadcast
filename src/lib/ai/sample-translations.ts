@@ -195,4 +195,104 @@ export const SAMPLE_TRANSLATIONS: Record<string, Partial<Record<Lang, Fields>>> 
       whyItMatters: 'Kulturell bakgrund, men utan direkt koppling till din vardag.',
     },
   },
+  'https://example.com/demo/obras-vallarta': {
+    es: {
+      title: 'Cierre parcial de carriles en Av. Vallarta por obras nocturnas',
+      summary:
+        'Durante dos semanas, un carril de Av. Vallarta permanecerá cerrado cada noche entre las 22:00 y las 05:00 horas por trabajos de repavimentación. El tráfico será más lento y conviene considerar rutas alternas.',
+      whyItMatters: 'Si circulas por Vallarta de noche o temprano por la mañana, sal un poco antes durante las próximas dos semanas.',
+    },
+    fr: {
+      title: "Fermeture partielle de voies sur l'avenue Vallarta pour travaux de nuit",
+      summary:
+        "Pendant deux semaines, une voie de l'avenue Vallarta sera fermée chaque nuit entre 22 h et 5 h pour des travaux de revêtement. La circulation sera plus lente et il vaut mieux envisager des itinéraires alternatifs.",
+      whyItMatters: 'Si tu circules sur Vallarta la nuit ou tôt le matin, pars un peu plus tôt pendant les deux prochaines semaines.',
+    },
+    sv: {
+      title: 'Körfältsavstängningar på Av. Vallarta för nattarbeten',
+      summary:
+        'Under två veckor stängs ett körfält på Avenida Vallarta varje natt mellan 22 och 05 för asfalteringsarbeten. Trafiken blir långsammare och det är bra att välja alternativa vägar.',
+      whyItMatters: 'Om du kör på Vallarta nattetid eller tidigt på morgonen, ge dig iväg lite tidigare de kommande två veckorna.',
+    },
+  },
+  'https://example.com/demo/calor-semana': {
+    es: {
+      title: 'Temperaturas altas y cielo despejado durante la semana',
+      summary:
+        'El pronóstico anuncia días soleados con máximas de hasta 31 grados. Se recomienda hidratarse y evitar la exposición al sol al mediodía.',
+      whyItMatters: 'Lleva agua y haz tus pendientes al aire libre por la mañana o al final de la tarde.',
+    },
+    fr: {
+      title: 'Fortes chaleurs et ciel dégagé cette semaine',
+      summary:
+        "Les prévisions annoncent des journées ensoleillées avec des maximales allant jusqu'à 31 degrés. Il est recommandé de bien s'hydrater et d'éviter le soleil de midi.",
+      whyItMatters: "Emporte de l'eau et fais tes courses en extérieur le matin ou en fin d'après-midi.",
+    },
+    sv: {
+      title: 'Höga temperaturer och klar himmel den här veckan',
+      summary:
+        'Prognosen visar soliga dagar med högst 31 grader. Drick mycket vatten och undvik att vara ute mitt på dagen.',
+      whyItMatters: 'Ta med vatten och gör ärenden utomhus på morgonen eller sen eftermiddag.',
+    },
+  },
+  'https://example.com/demo/horario-oficinas': {
+    es: {
+      title: 'Nuevo horario de atención en oficinas de gobierno del centro',
+      summary:
+        'A partir del lunes, las oficinas de atención ciudadana del centro cierran más temprano, a las 16:00 horas. Las citas pueden reservarse en línea con anticipación.',
+      whyItMatters: 'Si tienes trámites en el centro, acude por la mañana o reserva una cita en línea.',
+    },
+    fr: {
+      title: 'Nouveaux horaires des bureaux administratifs du centre-ville',
+      summary:
+        "À partir de lundi, les bureaux d'accueil des citoyens du centre-ville fermeront plus tôt, à 16 h. Les rendez-vous peuvent être réservés en ligne à l'avance.",
+      whyItMatters: 'Si tu as des démarches à faire au centre-ville, viens le matin ou réserve un créneau en ligne.',
+    },
+    sv: {
+      title: 'Nya öppettider på myndigheterna i city',
+      summary:
+        'Från måndag stänger medborgarkontoren i city tidigare, klockan 16. Tider kan bokas online i förväg.',
+      whyItMatters: 'Om du har ärenden i city, gå dit på förmiddagen eller boka en tid online.',
+    },
+  },
+  'https://example.com/demo/precio-gasolina': {
+    es: {
+      title: 'Sube el precio de la gasolina Magna esta semana',
+      summary:
+        'A partir del jueves, la gasolina Magna cuesta unos centavos más por litro en las estaciones de la zona metropolitana. El precio del diésel no cambia.',
+      whyItMatters: 'Si manejas todos los días, planea tu presupuesto de gasolina para las próximas semanas. El transporte público sigue siendo una alternativa.',
+    },
+    fr: {
+      title: "Légère hausse du prix de l'essence cette semaine",
+      summary:
+        "À partir de jeudi, le litre d'essence Magna coûtera quelques centimes de plus dans les stations de la zone métropolitaine. Le prix du diesel reste inchangé.",
+      whyItMatters: 'Si tu conduis tous les jours, prévois ton budget carburant pour les semaines à venir. Les transports en commun restent une alternative.',
+    },
+    sv: {
+      title: 'Bensinpriset stiger något den här veckan',
+      summary:
+        'Från torsdag kostar Magna-bensin några centavos mer per liter på mackarna i storstadsområdet. Dieselpriset är oförändrat.',
+      whyItMatters: 'Om du kör varje dag, planera bensinbudgeten för de kommande veckorna. Kollektivtrafiken är fortfarande ett alternativ.',
+    },
+  },
+  'https://example.com/demo/festival-cine': {
+    es: {
+      title: 'Festival de cine internacional con funciones gratuitas en el centro',
+      summary:
+        'Durante una semana, la cineteca del centro presenta películas internacionales, con funciones gratuitas por la tarde. Se recomienda reservar lugar.',
+      whyItMatters: 'Una forma económica de practicar tu español y conocer gente. Revisa la cartelera antes de ir.',
+    },
+    fr: {
+      title: 'Festival du film international avec projections gratuites au centre-ville',
+      summary:
+        "Pendant une semaine, la cinémathèque du centre-ville présente des films internationaux, avec des projections gratuites l'après-midi. Il est conseillé de réserver sa place.",
+      whyItMatters: "Une façon économique de pratiquer ton espagnol et de rencontrer des gens. Consulte le programme avant de venir.",
+    },
+    sv: {
+      title: 'Internationell filmfestival med gratis visningar i city',
+      summary:
+        'Under en vecka visar filmarkivet i city internationella filmer, med gratis visningar på eftermiddagen. Det är bra att boka plats i förväg.',
+      whyItMatters: 'Ett billigt sätt att träna spanska och träffa folk. Kolla programmet innan du går.',
+    },
+  },
 };

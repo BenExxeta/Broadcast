@@ -14,14 +14,20 @@ async function ensureFresh(): Promise<void> {
   if ((isMockMode() && stale) || empty) await refreshNews();
 }
 
-/** Articles that pass the relevance threshold and fall in the edition window, most relevant first. */
+/**
+ * Articles that pass the relevance threshold, most relevant first. Live mode keeps only
+ * articles from the last editionWindowHours. Demo mode shows only the sample articles
+ * and skips the time window, so the same stories appear on every day.
+ */
 export async function loadEdition(now: Date = new Date()): Promise<Article[]> {
   await ensureFresh();
+  const demo = isMockMode();
   const cutoff = now.getTime() - config.editionWindowHours * 3_600_000;
   return store
     .listArticles()
+    .filter((a) => !demo || a.isSample)
     .filter((a) => a.analysis.relevance >= config.relevanceThreshold)
-    .filter((a) => Date.parse(a.publishedAt) >= cutoff)
+    .filter((a) => demo || Date.parse(a.publishedAt) >= cutoff)
     .sort(
       (a, b) =>
         b.analysis.relevance - a.analysis.relevance ||

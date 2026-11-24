@@ -17,6 +17,10 @@ To fill the edition from the sample data at any time:
 npm run refresh
 ```
 
+## Stable demo for presentations
+
+Set `MOCK_MODE=true` in `.env` and restart `npm run dev`. The edition then always shows the same 12 sample articles, two per section, with fixed dates. Live articles from earlier refreshes stay in the store but are hidden in this mode. Without `MOCK_MODE` the app shows live news once `ANTHROPIC_API_KEY` is set, and the list changes every day.
+
 ## Live mode
 
 1. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY`.
